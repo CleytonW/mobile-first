@@ -90,6 +90,10 @@ header h1 {
   margin: 2.5rem 3rem 6rem;
 }
 
+main {
+  display: grid;
+}
+
 p {
   color: var(--fc-paragraph);
   font-size: var(--fz-secondary);
@@ -128,6 +132,9 @@ img {
   animation-duration: 700ms;
 }
 
+.card + .card {
+  margin-top: 3.6rem
+}
 
 .card img {
   /* height: 25rem; */
