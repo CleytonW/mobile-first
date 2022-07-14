@@ -3,95 +3,65 @@
   padding: 0;
   text-decoration: none;
   box-sizing: border-box;
-  
 }
 
 :root {
   --ff-primary: 'Staatliches', cursive;
-  --ff-secondary: 'Roboto', sans-serif;
+  --ff-secondary: 'Epilogue', sans-serif;
   
-  --fc-white: hsl(0, 0%, 100%);
-  --fc-wrapper: hsl(232, 17%, 35%);
+  --fc-white: #FFFFFF;
   --fc-paragraph: hsl(274, 84%, 12%);
-  
-  --bg-page: hsl(233, 100%, 97%);
+  --fc-heading: hsl(232, 17%, 35%);
+
   --bg-header: hsl(218, 17%, 62%);
-  --bg-heading: hsl(275, 18%, 79%);
-  
-  --fz-primary: 4rem;
+  --bg-logo: hsl(275, 18%, 79%);
+  --bg-page: hsl(233, 100%, 97%);
+  --bg-heading: hsl(312, 91%, 96%);
+
+
   --fz-secondary: 1.4rem;
   --fz-tertiary: 2rem;
 
   font-size: 62.5%;
 }
 
-body {
-  font-family: var(--ff-primary);
-  color: var(--fc-white);
-}
-
-/* body::before {
-  content: '';
-  width: 384px;
-  height: 279px;
-
-  margin: 0 15rem;
-
-  position: absolute;
-  z-index: 1;
-  background: var(--fc-wrapper);
-} */
-
 .page {
   background: var(--bg-page);
 
+  margin: 0 auto;
+  min-width: 38.4rem;
+}
+
+header  {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: space-evenly;
 
-  margin: auto;
-  max-width: 38.4rem;
-}
-
-header {
-  display: flex;
-  flex-direction: column;
- 
   background: var(--bg-header);
   width: 100%;
   height: 28rem;
-
+  margin-bottom: 2.5rem;
 }
 
-header .logo {
-  margin: 2.5rem auto;
-  /* width: 100%; */
-}
-
-.heading {
-  background: #CBC0D3;
-  height: 5rem;
-  margin-bottom: 3rem;
+header svg {
+  width: fit-content;
+  height: 13rem;
 }
 
 header h1 {
-  text-transform: uppercase;
-  font-size: var(--fz-primary);
-  line-height: 3.5rem;
-  letter-spacing: 0.05em;
+  font-family: var(--ff-primary);
   color: var(--fc-white);
-
-  margin: 8px auto;
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+  font-size: 4rem;
+  background-color: var(--bg-logo);
+  width: 100%;
+  text-align: center;
 }
 
 .wrapper {
-  margin: 2.5rem 3rem 6rem;
-}
-
-main {
-  display: grid;
+  margin: 2rem 0 5rem;
+  padding: 2rem;
 }
 
 p {
@@ -99,49 +69,35 @@ p {
   font-size: var(--fz-secondary);
   font-family: var(--ff-secondary);
   line-height: 1.5rem;
-
-  /* display: flex;
-  align-items: center;
-  text-align: center; */
-
-  /* width: 32rem; */
-  margin-bottom: 4.5rem; 
-}
-
-h2 {
-  font-size: var(--fz-tertiary);
-  font-family: var(--ff-primary);
-  color: var(--fc-wrapper);
-  text-transform: none;
+  text-align: center;
   font-weight: 400;
 
-  line-height: 34px;
-  letter-spacing: 0.05em;
-  line-height: 3.5rem;
-  text-transform: uppercase;
+  /* margin-bottom: 4.5rem;  */
+}
+
+main {
+  padding: 0 3.2rem;
+  display: grid;
+  gap: 3rem;
+}
+
+.card:nth-child(eve) img {
+  height: 45rem;
 }
 
 .card {
   position: relative;
-}
-
-img {
-  width: 100%;
-  height: auto;
+  /* border-radius: 2rem; */
   animation: downtop;
   animation-duration: 700ms;
 }
 
-.card + .card {
-  margin-top: 3.6rem
-}
-
 .card img {
-  /* height: 25rem; */
-  /* width: 100%; */
-  /* border-radius: 2rem; */
+  width: 100%;
+  height: 25rem;
   object-fit: cover;
   transition: all 200ms;
+  border-radius: 2rem;
 }
 
 .card img:hover {
@@ -149,7 +105,16 @@ img {
   opacity: 0.9;
 }
 
-.card h2 {
+h2 {
+  font-size: var(--fz-tertiary);
+  font-family: var(--ff-primary);
+  color: var(--fc-heading);
+
+  line-height: 34px;
+  letter-spacing: 0.07em;
+  line-height: 3.5rem;
+  text-transform: uppercase;
+
   position: absolute;
   right: 1.6rem;
   top: 1.6rem;
@@ -163,7 +128,10 @@ img {
 
   animation: topdown;
   animation-duration: 2000ms;
-  /* transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96); */
+}
+
+span {
+  display: none;
 }
 
 @keyframes downtop {
@@ -187,5 +155,150 @@ img {
   100% {
     opacity: 1;
     transform: rotateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+  .page {
+    height: 100%;
+    width: 100%;
+    max-width: 128rem;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: 1fr 12rem;
+    grid-template-areas:
+    "tdesk main"
+    "footer footer"
+  }
+
+  .tdesk {
+    background-color: var(--bg-header);
+    grid-area: tdesk;
+  }
+
+  p {
+    color: var(--fc-white);
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  main {
+    width: 100%;
+    padding: 3rem;
+    display: grid;
+    grid-area: main;
+    gap: 2rem
+  }
+
+  .card:nth-child(even) img {
+    height: 25rem;
+  }
+
+  footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer p {
+    font-family: var(--ff-secondary);
+    font-size: 1.4rem;
+    color: #4A4E69;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: #4A4E69;
+    font-weight: bold;
+  }
+
+  span {
+    display: initial;
+  }
+}
+
+@media (min-width: 900px) {
+  .page {
+    width: 100%;
+    max-width: 128rem;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: 1fr 10rem;
+    grid-template-areas: 
+    "tdesk main"
+    "tdesk footer"
+  }
+
+  main {
+    grid: 15rem 16.8rem 20rem / 1fr 1fr 1fr;
+    grid-template-areas: 
+      "a b c"
+      "d b f"
+      "d e f";
+    gap: 3rem;
+  }
+
+  header {
+    margin-bottom: 0;
+  }
+
+  .wrapper {
+    margin: 0;
+  }
+
+  .card:nth-child(even) img {
+    height: 350px;
+  }
+
+  .card:nth-child(odd) img {
+    height: 150px;
+  }
+
+  .card:nth-child(1) { 
+     grid-area: a; 
+   } 
+
+   .card:nth-child(2) { 
+     grid-area: b; 
+   } 
+
+   .card:nth-child(3) { 
+     grid-area: c; 
+   } 
+
+   .card:nth-child(4) { 
+     grid-area: d; 
+   } 
+
+   .card:nth-child(5) { 
+     grid-area: e; 
+   } 
+
+   .card:nth-child(6) { 
+     grid-area: f; 
+   } 
+
+  .card h2 {
+    animation: none;
+    transition: opacity 700ms ease-in;
+    opacity: 0;
+    background-color: var(--bg-heading);
+    color: var(--fc-heading);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .card img {
+    transition: all 200ms;
+  }
+
+  .card:hover img {
+    transform: scale(1.05);
+  }
+
+  .card:hover h2 {
+    opacity: 0.9;
   }
 }
